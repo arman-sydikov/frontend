@@ -1,0 +1,37 @@
+<div #demoYouTubePlayer style="flex-grow: 1; display: flex;">
+  <cdk-virtual-scroll-viewport [itemSize]="videoHeight+200" style="flex-grow: 1;">
+    <div *cdkVirtualFor="let item of items" [style.height]="(videoHeight+200)+'px'" class="example-item">
+      <mat-card class="mat-elevation-z8">
+        <mat-card-header>
+          <mat-card-title style="display: flex;">
+            <span>{{item.time}}</span>
+            <span class="example-spacer"></span>
+            <span>{{item.text}}</span>
+          </mat-card-title>
+          <mat-card-subtitle style="display: flex;">
+            <span class="example-spacer"></span>
+            <a mat-stroked-button href="https://www.youtube.com/playlist?list={{item.playlistId}}" target="_blank">{{item.tvshow}}</a>&nbsp;
+            <a mat-stroked-button href="https://youtu.be/{{item.videoId}}" target="_blank">第{{item.episode}}集</a>
+            <span class="example-spacer"></span>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-tab-group dynamicHeight mat-stretch-tabs headerPosition="below" class="mat-elevation-z4">
+            <mat-tab label="视频">
+              <youtube-player [width]="videoWidth" [height]="videoHeight" [videoId]="item.videoId" [startSeconds]="item.startSeconds" [endSeconds]="item.endSeconds" [playerVars]="{controls: 0, rel: 0, start: item.startSeconds, end: item.endSeconds}"></youtube-player>
+            </mat-tab>
+            <mat-tab label="字幕">
+              <mat-list class="scrollable-list" [style.height]="(videoHeight-5)+'px'" [style.width]="videoWidth+'px'">
+                <mat-list-item> 00:07:15 <span class="example-spacer"></span> 爸怕是在明成家住不下去了 <mat-divider></mat-divider></mat-list-item>
+                <mat-list-item> 00:07:20 <span class="example-spacer"></span> 这明成又怎么了 <mat-divider></mat-divider></mat-list-item>
+                <mat-list-item> 00:07:24 <span class="example-spacer"></span> <span class="span-accent">一言难尽</span>哪 <mat-divider></mat-divider></mat-list-item>
+                <mat-list-item> 00:07:27 <span class="example-spacer"></span> 他们这两口子吧 <mat-divider></mat-divider></mat-list-item>
+                <mat-list-item> 00:07:28 <span class="example-spacer"></span> 也不给我做饭吃</mat-list-item>
+              </mat-list>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</div>

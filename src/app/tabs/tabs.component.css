@@ -1,0 +1,17 @@
+.example-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-card {
+  max-width: 640px;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.scrollable-list {
+  /* height: 200px;
+  width: 100%; */
+  overflow: scroll;
+}
